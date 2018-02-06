@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: #ccffff;
+}
+.input-output-box{
+	position: relative;
+    border: 1px solid #3C1C78;
+    padding: 20px; 
+    width: 260px;
+    height: 3px;    
+}
+.custom-select {
+  position: relative;
+  display: block;
+  max-width: 300px;
+  min-width: 180px;
+  margin: 0 auto;
+  border: 1px solid #3C1C78;
+  background-color: #ffffff;
+  z-index: 10;
+}
+.custom-select select {
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 12px 55px 15px 15px;
+  font-size: 14px;
+  color: ##66ffff;
+}
+.custom-select:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  line-height: 38px;
+  content: "∨";
+  text-align: center;
+  color: ##66ffff;
+  font-size: 24px;
+  border-left: 1px solid #3C1C78;
+  z-index: -1;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+</style>
+<title>Distance Unit Converter</title>
+</head>
+<body>
+<h1 align="center">Distance Unit Converter</h1>
+<h2 align="center">Welcome to my unit convertor!</h2>
+<h2 align="center">By Xiaohui(Sherry) Qiao</h2>
+<h2 align="center">Please enter a value and choose the units to convert:</h2>
+
+<div align="center">
+	<label>Value: </label>	
+	<input class="input-output-box" id="fromValue" type="number">
+</div>
+<br>
+<div align="center">
+	<label>From Unit: </label>
+	<label class="custom-select" for="fromUnit">
+		<select id="fromUnit">
+			  <option value="inch" selected="selected">inch</option>
+			  <option value="feet">feet</option>
+			  <option value="yard">yard</option>
+			  <option value="mile">mile</option>
+			  <option value="meter">meter</option>
+			  <option value="kilometer">kilometer</option>
+		</select>
+	</label>
+</div>
+<br>
+<br>
+<div align="center">
+	<label>To Unit: </label>
+	<label class="custom-select" for="toUnit">
+		<select id="toUnit">
+			  <option value="inch">inch</option>
+			  <option value="feet" selected="selected">feet</option>
+			  <option value="yard">yard</option>
+			  <option value="mile">mile</option>
+			  <option value="meter">meter</option>
+			  <option value="kilometer">kilometer</option>
+		</select>
+	</label>
+</div>
+</br>
+<div align="center">
+	<button class="button" onclick="LengthConverter()">Convert</button>
+</div>
+
+<div id="summary"></div>
+<script>
+
+function LengthConverter() {
+
+	var valueFrom_init = document.getElementById("fromValue").value;
+	var valueFrom = parseFloat(valueFrom_init);
+	var valueTo;
+	var e1 = document.getElementById("fromUnit");
+	var unitFrom = e1.options[e1.selectedIndex].value;
+	var e2 = document.getElementById("toUnit");
+	var unitTo = e2.options[e2.selectedIndex].value;
+    console.log(valueFrom);
+	console.log(valueTo);
+	console.log(unitFrom);
+	console.log(unitTo);
+		 
+	if (unitFrom=="feet") {
+		if(unitTo=="feet"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="meter"){
+			valueTo =(valueFrom/3.2808).toFixed(2); }
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*12).toFixed(2);}
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*0.3333).toFixed(2);}	
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/3280.8).toFixed(2);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.00018939).toFixed(5);}	
+	}
+	
+	if (unitFrom=="meter") {
+		if(unitTo=="meter"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*3.2808).toFixed(2); }
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*39.370).toFixed(2);}
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*1.0936).toFixed(2);}	
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/1000).toFixed(2);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.00062137).toFixed(5);}	
+	}
+	
+	if (unitFrom=="meter") {
+		if(unitTo=="meter"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*3.2808).toFixed(2); }
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*39.370).toFixed(2);}
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*1.0936).toFixed(2);}	
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/1000).toFixed(2);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.00062137).toFixed(5);}	
+	}
+
+	if (unitFrom=="inch") {
+		if(unitTo=="inch"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*0.083333).toFixed(3); }
+		else if(unitTo=="meter"){
+			valueTo = (valueFrom/39.370).toFixed(3);}
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*0.027778).toFixed(3);}	
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/39370).toFixed(6);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.000015783).toFixed(6);}	
+	}
+	
+	if (unitFrom=="yard") {
+		if(unitTo=="yard"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*3).toFixed(3); }
+		else if(unitTo=="meter"){
+			valueTo = (valueFrom/1.0936).toFixed(3);}
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*36).toFixed(3);}	
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/1093.6).toFixed(5);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.00056818).toFixed(5);}	
+	}
+	
+	if (unitFrom=="kilometer") {
+		if(unitTo=="kilometer"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*3280.8).toFixed(3); }
+		else if(unitTo=="meter"){
+			valueTo = (valueFrom*1000).toFixed(3);}
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*39370).toFixed(3);}	
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*1093.6).toFixed(5);}
+		else if(unitTo=="mile"){
+			valueTo = (valueFrom*0.62137).toFixed(5);}	
+	}
+
+	if (unitFrom=="mile") {
+		if(unitTo=="mile"){
+			valueTo =(valueFrom/1).toFixed(2); }
+		else if(unitTo=="feet"){
+			valueTo =(valueFrom*5280).toFixed(3); }
+		else if(unitTo=="meter"){
+			valueTo = (valueFrom/0.00062137).toFixed(3);}
+		else if(unitTo=="inch"){
+			valueTo = (valueFrom*63360).toFixed(3);}	
+		else if(unitTo=="yard"){
+			valueTo = (valueFrom*1760).toFixed(5);}
+		else if(unitTo=="kilometer"){
+			valueTo = (valueFrom/0.62137).toFixed(5);}	
+	}
+     
+  var sumDIV = document.getElementById('summary');
+  sumDIV.innerHTML= "<h2 align='center'>"+ valueFrom+" "+unitFrom+ " is equal to "+ valueTo+" "+unitTo+".</h2>"
+  }
+
+
+</script>
+</body>
+</html>
